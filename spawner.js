@@ -4,7 +4,7 @@ var spawner = {
 		var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
 	    var carriers = _.filter(Game.creeps, (creep) => creep.memory.role == 'carrier');
 	    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-	    console.log('CREEP STATS: \n Builders: ' + builders.length + '\n Carriers: ' + carriers.length+ '\n Havesters: ' + harvesters.length);
+	    /*console.log('CREEP STATS: \n Builders: ' + builders.length + '\n Carriers: ' + carriers.length+ '\n Havesters: ' + harvesters.length);*/
 
 	    var idealBuidlers = 2;
 	    var idealCarriers = 1;
