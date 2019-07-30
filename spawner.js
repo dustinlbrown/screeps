@@ -8,7 +8,7 @@ var spawner = {
 
 	    var idealBuidlers = 2;
 	    var idealCarriers = 1;
-	    var idealHarvesters = 2;
+	    var idealHarvesters = Game.spawns['Spawn1'].room.find(FIND_SOURCES).length;
 
 	    if (carriers.length < 2) {
 	        var newName = 'Carrier' + Game.time;
@@ -18,7 +18,7 @@ var spawner = {
 	    }
 
 	    if (harvesters.length < 2) {
-	        var newName = 'Harvesters' + Game.time;
+	        var newName = 'Harvester' + Game.time;
 	        console.log('Spawning new harvester: ' + newName);
 	        Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName, 
 	            {memory: {role: 'harvester'}});

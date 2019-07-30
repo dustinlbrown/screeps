@@ -2,12 +2,22 @@ var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
+
+		for(var sources in creep.room.find(FIND_SOURCES).length) {
+			if (typeof creep.memory.AssignedSource === 'undefined' ) {
+				if (_.filter(Game.creeps,(creep) => creep.memory.AssignedSource == sources).length == 0 ){
+					console.log('Assigning Creep to source' + sources)
+        			creep.memory.AssignedSource = sources;
+        		}	
+			}
+        }
+
 		if(creep.carry.energy < creep.carryCapacity) {
-            var sources = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+            if(creep.harvest(sources[creep.memory.AssignedSource]) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(sources[creep.memory.AssignedSource], {visualizePathStyle: {stroke: '#ffaa00'}});
             }
         }
+        
         else {
             var targets = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
