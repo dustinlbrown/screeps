@@ -24,10 +24,17 @@ var spawner = {
 	            {memory: {role: 'harvester'}});
 	    }
 	    
+	    if (builders.length < 2) {
+	        var newName = 'Builder' + Game.time;
+	        console.log('Spawning new builder: ' + newName);
+	        Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName, 
+	            {memory: {role: 'builder'}});
+	    }
+	    
 	    if (Game.spawns['Spawn1'].spawning) { 
 	        var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
 	        Game.spawns['Spawn1'].room.visual.text(
-	            'Spawning ' + spawningCreep.memory.role,
+	            'SPAWNING:' + spawningCreep.memory.role,
 	            Game.spawns['Spawn1'].pos.x + 1, 
 	            Game.spawns['Spawn1'].pos.y, 
 	            {align: 'left', opacity: 0.8});
