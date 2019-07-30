@@ -116,7 +116,7 @@ depositEnergy = function(creep) {
     //We hopefully have a target, now lets get it!
     if (typeof target !== 'undefined'){
         creep.moveTo(target);
-        creep.transferEnergy(target);
+        creep.transfer(target,RESOURCE_ENERGY);
         //creep.memory.withdrawalSource = undefined;
     }
 };
