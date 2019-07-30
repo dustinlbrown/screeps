@@ -26,7 +26,7 @@ var roleCarrier = {
 };
 
 harvestEnergy = function(creep) {
-	var energy = room.find(FIND_DROPPED_ENERGY);
+	var energy = creep.room.find(FIND_DROPPED_ENERGY);
     var target = undefined;
     // collect
 
