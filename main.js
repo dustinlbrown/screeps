@@ -1,5 +1,5 @@
 var spawner = require('spawner');
-var roleBuilderr = require('role_builder');
+var roleBuilder = require('role_builder');
 var roleCarrier = require('role_carrier');
 var roleHarvester = require('role_harvester');
 
