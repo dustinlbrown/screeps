@@ -41,7 +41,7 @@ harvestEnergy = function(creep) {
                 if (!energy[i]) {
                     continue
                 }
-                if (this.pos.inRangeTo(energy[i], 8)) {
+                if (creep.pos.inRangeTo(energy[i], 8)) {
                     targetEnergyIndex = i;
                     break;
                 }
