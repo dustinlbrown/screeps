@@ -21,7 +21,6 @@ var roleBuilder = {
             withdrawEnergy(creep);
         }
     }
-    }
 };
 
 withdrawEnergy = function(creep) {

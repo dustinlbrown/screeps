@@ -3,7 +3,7 @@ var roleHarvester = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-    	var sources = creep.room.find(FIND_SOURCES)
+    	var sources = creep.room.find(FIND_SOURCES);
 
     	//this section checks if the harvester has been assigned to a source.  It relies on a 1:1 ratio of sources to miners.
     	if (typeof creep.memory.assignedSource === 'undefined' ) {
