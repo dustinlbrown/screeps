@@ -8,15 +8,15 @@ var roleCarrier = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-
-
 		console.log
 	    if (creep.carry.energy === creep.carryCapacity || creep.memory.action === ACTIONS.DEPOSIT) {
+	        console.log('depositing energy');
 	        creep.memory.action = ACTIONS.DEPOSIT;
 	        depositEnergy(creep);
 	    }
 
 	    if (creep.carry.energy < 50 || creep.memory.action === ACTIONS.HARVEST) {
+	    	console.log('harvesting energy');
         	creep.memory.action = ACTIONS.HARVEST;
         	harvestEnergy(creep);
         }
