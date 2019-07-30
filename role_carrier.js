@@ -10,13 +10,11 @@ var roleCarrier = {
 
 		console.log
 	    if (creep.carry.energy === creep.carryCapacity || creep.memory.action === ACTIONS.DEPOSIT) {
-	        console.log('depositing energy');
 	        creep.memory.action = ACTIONS.DEPOSIT;
 	        depositEnergy(creep);
 	    }
 
 	    if (creep.carry.energy < 50 || creep.memory.action === ACTIONS.HARVEST) {
-	    	console.log('harvesting energy');
         	creep.memory.action = ACTIONS.HARVEST;
         	harvestEnergy(creep);
         }
@@ -117,7 +115,7 @@ depositEnergy = function(creep) {
 
     //We hopefully have a target, now lets get it!
     if (typeof target !== 'undefined'){
-        creep.moveMeTo(target);
+        creep.moveTo(target);
         creep.transferEnergy(target);
         //creep.memory.withdrawalSource = undefined;
     }
