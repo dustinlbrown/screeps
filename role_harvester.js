@@ -6,11 +6,11 @@ var roleHarvester = {
     	if (typeof creep.memory.AssignedSource === 'undefined' ) {
     		console.log(creep.name + ' does not have an assigned source.');
 			
-			for(var sources in creep.room.find(FIND_SOURCES)) {
-				console.log(sources);
+			for(var source in creep.room.find(FIND_SOURCES)) {
+				console.log(source);
 				if (_.filter(Game.creeps,(creep) => creep.memory.AssignedSource == sources) == 0 ){
-					console.log('Assigning Creep to source' + sources)
-        			creep.memory.AssignedSource = creep.room.find(FIND_SOURCES).indexof(sources);
+					console.log('Assigning Creep to source ' + source)
+        			creep.memory.AssignedSource = source;
         			break;
         		}	
 	        }
