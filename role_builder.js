@@ -82,5 +82,6 @@ withdrawEnergy = function(creep) {
         creep.memory.withdrawalSource = target.structureType;
         if(creep.carry.energy === creep.carryCapacity){creep.memory.action = ACTION.CONSTRUCTION;}
     }
+};
 
 module.exports = roleBuilder;
