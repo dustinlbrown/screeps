@@ -78,7 +78,7 @@ withdrawEnergy = function(creep) {
 
     if (typeof target !== 'undefined') { //todo figure out why we move to a target we don't have....
         creep.moveTo(target);
-        target.transferEnergy(creep);
+        target.withdraw(creep);
         creep.memory.withdrawalSource = target.structureType;
         if(creep.carry.energy === creep.carryCapacity){creep.memory.action = ACTION.CONSTRUCTION;}
     }
