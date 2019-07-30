@@ -1,4 +1,4 @@
-var roleMiner = {
+var roleBuilder = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -9,4 +9,4 @@ var roleMiner = {
 	}
 };
 
-module.exports = roleMiner;
+module.exports = roleBuilder;
