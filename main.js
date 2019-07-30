@@ -12,6 +12,7 @@ module.exports.loop = function () {
         }
     }
 
+
     spawner.run();
 
     for(var name in Game.creeps) {
