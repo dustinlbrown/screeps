@@ -26,7 +26,7 @@ var roleCarrier = {
 };
 
 harvestEnergy = function(creep) {
-	var energy = creep.room.find(FIND_DROPPED_ENERGY);
+	var energy = creep.room.find(FIND_DROPPED_RESOURCES);
     var target = undefined;
     // collect
 
@@ -56,8 +56,8 @@ harvestEnergy = function(creep) {
         }
         //var closestEnergy = this.pos.findClosestByRange(FIND_DROPPED_ENERGY);
 		
-		this.moveTo(target);
-        this.pickup(target);
+		creep.moveTo(target);
+        creep.pickup(target);
     }
 }
 
@@ -119,7 +119,7 @@ depositEnergy = function(creep) {
     if (typeof target !== 'undefined'){
         creep.moveMeTo(target);
         creep.transferEnergy(target);
-        //this.memory.withdrawalSource = undefined;
+        //creep.memory.withdrawalSource = undefined;
     }
 };
 
