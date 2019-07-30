@@ -6,7 +6,7 @@ var spawner = {
 	    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
 	    /*console.log('CREEP STATS: \n Builders: ' + builders.length + '\n Carriers: ' + carriers.length+ '\n Havesters: ' + harvesters.length);*/
 
-	    var idealBuilders = 1;
+	    var idealBuilders = 0;
 	    var idealCarriers = 1;
 	    var idealHarvesters = Game.spawns['Spawn1'].room.find(FIND_SOURCES).length;
 
