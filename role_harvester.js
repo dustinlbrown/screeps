@@ -8,7 +8,7 @@ var roleHarvester = {
 			
 			for(var source in creep.room.find(FIND_SOURCES)) {
 				console.log(source);
-				if (_.filter(Game.creeps,(creep) => creep.memory.AssignedSource == sources) == 0 ){
+				if (_.filter(Game.creeps,(creep) => creep.memory.AssignedSource == source) == 0 ){
 					console.log('Assigning Creep to source ' + source)
         			creep.memory.AssignedSource = source;
         			break;
