@@ -4,11 +4,13 @@ var spawner = {
 		var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
 	    var carriers = _.filter(Game.creeps, (creep) => creep.memory.role == 'carrier');
 	    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+	    var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
 	    /*console.log('CREEP STATS: \n Builders: ' + builders.length + '\n Carriers: ' + carriers.length+ '\n Havesters: ' + harvesters.length);*/
 
-	    var idealBuilders = 0;
-	    var idealCarriers = 1;
+	    var idealBuilders = 1;
+	    var idealCarriers = 2;
 	    var idealHarvesters = Game.spawns['Spawn1'].room.find(FIND_SOURCES).length;
+	    var idealUpgraders = 1;
 
 	    if (carriers.length < idealCarriers) {
 	        var newName = 'Carrier' + Game.time;
@@ -29,6 +31,13 @@ var spawner = {
 	        console.log('Spawning new builder: ' + newName);
 	        Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName, 
 	            {memory: {role: 'builder'}});
+	    }
+	    
+	    if (upgrader.length < idealUpgraders) {
+	        var newName = 'Upgrader' + Game.time;
+	        console.log('Spawning new upgrader: ' + newName);
+	        Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName, 
+	            {memory: {role: 'upgrader'}});
 	    }
 	    
 	    if (Game.spawns['Spawn1'].spawning) { 
