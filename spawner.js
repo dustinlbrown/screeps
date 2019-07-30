@@ -33,7 +33,7 @@ var spawner = {
 	            {memory: {role: 'builder'}});
 	    }
 	    
-	    if (upgrader.length < idealUpgraders) {
+	    if (upgraders.length < idealUpgraders) {
 	        var newName = 'Upgrader' + Game.time;
 	        console.log('Spawning new upgrader: ' + newName);
 	        Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName, 
