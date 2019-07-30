@@ -6,25 +6,25 @@ var spawner = {
 	    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
 	    /*console.log('CREEP STATS: \n Builders: ' + builders.length + '\n Carriers: ' + carriers.length+ '\n Havesters: ' + harvesters.length);*/
 
-	    var idealBuidlers = 1;
+	    var idealBuilders = 1;
 	    var idealCarriers = 1;
 	    var idealHarvesters = Game.spawns['Spawn1'].room.find(FIND_SOURCES).length;
 
-	    if (carriers.length < 2) {
+	    if (carriers.length < idealCarriers) {
 	        var newName = 'Carrier' + Game.time;
 	        console.log('Spawning new carrier: ' + newName);
 	        Game.spawns['Spawn1'].spawnCreep([CARRY, CARRY, MOVE, MOVE], newName, 
 	        	{memory: {role: 'carrier'}});
 	    }
 
-	    if (harvesters.length < 2) {
+	    if (harvesters.length < idealHarvesters) {
 	        var newName = 'Harvester' + Game.time;
 	        console.log('Spawning new harvester: ' + newName);
 	        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, MOVE], newName, 
 	            {memory: {role: 'harvester'}});
 	    }
 	    
-	    if (builders.length < 2) {
+	    if (builders.length < idealBuilders) {
 	        var newName = 'Builder' + Game.time;
 	        console.log('Spawning new builder: ' + newName);
 	        Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName, 
