@@ -24,20 +24,24 @@ var spawner = {
 
 
 			if (carriers.length < idealCarriers) {
-				creepBody = getCreepBody('carrier');
+				creepRole = 'carrier'
+				creepBody = getCreepBody(creepRole);
 			}else if (harvesters.length < idealHarvesters) {
-				creepBody = getCreepBody('harvester');
+				creepRole = 'harvester'
+				creepBody = getCreepBody(creepRole);
 			}else if (builders.length < idealBuilders) {
-				creepBody = getCreepBody('builder');
+				creepRole = 'builder'
+				creepBody = getCreepBody(creepRole);
 			}else if (upgraders.length < idealUpgraders) {
-				creepBody = getCreepBody('upgrader');
+				creepRole = 'upgrader'
+				creepBody = getCreepBody(creepRole);
 			}
 			
 			if (creepBody.length > 0){
 				Game.spawns['Spawn1'].spawnCreep(creepBody, creepRole + Game.time, 
 					{memory: 
 						{role: creepRole}});
-				console.log('Spawning new ' + creepRole + ': ' + newName);
+				console.log('Spawning new ' + creepRole);
 			}
 		}else { 
 	        var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
