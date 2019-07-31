@@ -19,7 +19,7 @@ var spawner = {
 
 		if(!Game.spawns['Spawn1'].spawning){
 
-			var creepBody = []
+			var creepBody = [];
 			var creepRole = '';
 
 
