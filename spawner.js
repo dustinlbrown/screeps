@@ -93,7 +93,7 @@ var getCreepBody = function(role){
                 
                 //push this body part into the body array
 				body.push(bodyPart);
-				console.log(opts.body.stringify());
+				console.log(JSON.stringify(opts.body));
                 
                 //decrement the maximum energy allowed for the next iteration
                 maxEnergy -= BODYPART_COST[bodyPart];
