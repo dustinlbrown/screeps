@@ -63,15 +63,15 @@ var getCreepBody = function(role){
 	let maxBodyParts = 50;
 	let maxEnergy = Game.spawns['Spawn1'].room.energyCapacityAvailable;
 	let body = [];
-
+	var opts = '';
 	if (role == 'builder'){
-		var opts = {body: {WORK: 2, MOVE: 1, CARRY: 1},exact: false};
+		opts = {body: {WORK: 2, MOVE: 1, CARRY: 1},exact: false};
 	}else if (role == 'carrier'){
-		var opts = {body: {MOVE: 1, CARRY: 1},exact: false};
+		opts = {body: {MOVE: 1, CARRY: 1},exact: false};
 	}else if (role == 'harvester'){
-		var opts = {body: {MOVE: 4, WORK: 3, MOVE: 2, WORK: 2},exact: true};
+		opts = {body: {MOVE: 4, WORK: 3, MOVE: 2, WORK: 2},exact: true};
 	}else if (role == 'upgrader'){
-		var opts = {body: {WORK: 2, MOVE: 1, CARRY: 1},exact: false};
+		opts = {body: {WORK: 2, MOVE: 1, CARRY: 1},exact: false};
 	}
 
 	if(opts.exact){
