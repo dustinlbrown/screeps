@@ -81,7 +81,7 @@ var getCreepBody = function(role){
 					break;
 				}
 
-				bodyOptions.push(bodyPart);
+				body.push(bodyPart);
 				maxEnergy -= BODYPART_COST[bodyPart];
 				maxBodyParts--;
 			}
