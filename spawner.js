@@ -74,23 +74,35 @@ var getCreepBody = function(role){
 		var exact = false;
 	}
 
-	if(exact){
-	
-		for (let bodyPart in bodyOptions){
-			if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0 ) break;
+    if(exact){
 
-			for (let i=0; i< bodyOptions[bodyPart];i++){
-				if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0) {
-					maxEnergy =0;
-					break;
-				}
+        //cycle through the body parts in options
+        for(let bodyPart in bodyOptions) {
 
-				body.push(bodyPart);
-				maxEnergy -= BODYPART_COST[bodyPart];
-				maxBodyParts--;
-			}
-		}
-	}else{
+            //Need to break out of both for loops
+            if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0) break;
+
+            //cycle through the number of bodyparts for each body part
+            for (let i = 0; i < opts.body[bodyPart]; i++) {
+
+                //if the next body part costs too much or we've run into our 50 bodypart limit,     
+                //break
+                if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0){
+                    maxEnergy = 0; break;
+                }
+                
+                //push this body part into the body array
+                body.push(bodyPart);
+                
+                //decrement the maximum energy allowed for the next iteration
+                maxEnergy -= BODYPART_COST[bodyPart];
+                
+                //decrement the 50 body part limit
+                maxBodyParts--;
+            }
+        }
+    }
+    else{
         //ratioCost will tell us how much each iteration of the ratio will cost
         let ratioCost = 0;
         for(let bodyPart in bodyOptions){
