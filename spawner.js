@@ -42,6 +42,7 @@ var spawner = {
 					{memory: 
 						{role: creepRole}});
 				console.log('Spawning new ' + creepRole + ' with body ' + creepBody.toString());
+				console.log('Energy Available: ' + Game.spawns['Spawn1'].room.energyCapacityAvailable);
 			}
 		}else { 
 	        var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
