@@ -21,17 +21,21 @@ var spawner = {
 
 			var creepBody = []
 			var creepRole = '';
+			var needCreep = false;
 
 			if (carriers.length < idealCarriers) {
 				creepBody = [];
 				creepBody.push(CARRY);
 				creepBody.push(CARRY);
+				creepBody.push(CARRY);
+				creepBody.push(MOVE);
 				creepBody.push(MOVE);
 				creepBody.push(MOVE);
 			}else if (harvesters.length < idealHarvesters) {
 				creepBody = [];
 				creepBody.push(WORK);
 				creepBody.push(WORK);
+				creepBody.push(MOVE);
 				creepBody.push(MOVE);
 			}else if (builders.length < idealBuilders) {
 				creepBody = [];
@@ -47,11 +51,11 @@ var spawner = {
 				creepBody.push(MOVE);
 			}
 			
-			
-			Game.spawns['Spawn1'].spawnCreep(creepBody, creepRole + Game.time, 
-				{memory: {role: creepRole}});
-			console.log('Spawning new ' + creepRole + ': ' + newName);
-
+			if (creepBody.length > 0){
+				Game.spawns['Spawn1'].spawnCreep(creepBody, creepRole + Game.time, 
+					{memory: {role: creepRole}});
+				console.log('Spawning new ' + creepRole + ': ' + newName);
+			}
 		}else { 
 	        var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
 	        Game.spawns['Spawn1'].room.visual.text(
