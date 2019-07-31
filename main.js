@@ -4,6 +4,8 @@ var roleCarrier = require('role_carrier');
 var roleHarvester = require('role_harvester');
 var roleUpgrader = require('role_upgrader');
 
+require('prototype_creep');
+
 module.exports.loop = function () {
 
     for(var name in Memory.creeps) {
