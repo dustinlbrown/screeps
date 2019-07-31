@@ -83,7 +83,7 @@ var getCreepBody = function(role){
             if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0) break;
 
             //cycle through the number of bodyparts for each body part
-            for (let i = 0; i < opts.body[bodyPart]; i++) {
+            for (let i = 0; i < bodyOptions[bodyPart]; i++) {
 
                 //if the next body part costs too much or we've run into our 50 bodypart limit,     
                 //break
