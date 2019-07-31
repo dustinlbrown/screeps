@@ -61,29 +61,25 @@ var getCreepBody = function(role){
 	let body = [];
 
 	if (role == 'builder'){
-		var bodyOptions = {"WORK": 2, "MOVE": 1, "CARRY": 1}
-		var exact = false;
+		var opts = {body: {'WORK': 2, 'MOVE': 1, 'CARRY': 1},exact: false}
 	}else if (role == 'carrier'){
-		var bodyOptions = {"MOVE": 1, "CARRY": 1}
-		var exact = false;
+		var opts = {body: {'MOVE': 1, 'CARRY': 1},exact: false}
 	}else if (role == 'harvester'){
-		var bodyOptions = {"WORK": 2, "MOVE": 2, "WORK": 3, "MOVE": 5}
-		var exact = true;
+		var opts = {body: {'WORK': 2, 'MOVE': 2, 'WORK': 3, 'MOVE': 5},exact: true}
 	}else if (role == 'upgrader'){
-		var bodyOptions = {"WORK": 2, "MOVE": 1, "CARRY": 1}
-		var exact = false;
+		var opts = {body: {'WORK': 2, 'MOVE': 1, 'CARRY': 1},exact: false}
 	}
 
-    if(exact){
+	if(opts.exact){
 
         //cycle through the body parts in options
-        for(let bodyPart in bodyOptions) {
+        for(let bodyPart in opts.body) {
 
             //Need to break out of both for loops
             if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0) break;
 
             //cycle through the number of bodyparts for each body part
-            for (let i = 0; i < bodyOptions[bodyPart]; i++) {
+            for (let i = 0; i < opts.body[bodyPart]; i++) {
 
                 //if the next body part costs too much or we've run into our 50 bodypart limit,     
                 //break
@@ -102,11 +98,14 @@ var getCreepBody = function(role){
             }
         }
     }
+    
+    //if this is a ratio instead of exact
     else{
+        
         //ratioCost will tell us how much each iteration of the ratio will cost
         let ratioCost = 0;
-        for(let bodyPart in bodyOptions){
-            for(let i = 0; i < bodyOptions[bodyPart]; i++){
+        for(let bodyPart in opts.body){
+            for(let i = 0; i < opts.body[bodyPart]; i++){
                 ratioCost += BODYPART_COST[bodyPart];
             }
         }
@@ -116,16 +115,16 @@ var getCreepBody = function(role){
         //bodyparts allowed, or the specified bodypart limit we put into the options
         let maxUnits = Math.min(
             Math.floor(maxEnergy / ratioCost),
-            Math.floor((maxBodyParts || 50) / _.sum(bodyOptions)),
-            Math.floor(maxBodyParts / _.sum(bodyOptions))
+            Math.floor((opts.maxBodyParts || 50) / _.sum(opts.body)),
+            Math.floor(maxBodyParts / _.sum(opts.body))
         );
         //Now we know how many of each bodypart we will make, we cycle through the order given to 
         //create the body
-        for(let bodyPart in bodyOptions){
-            for(let i = 0; i < maxUnits * bodyOptions[bodyPart]; i++)
+        for(let bodyPart in opts.body){
+            for(let i = 0; i < maxUnits * opts.body[bodyPart]; i++)
                 body.push(bodyPart);
         }
-	}
+    }
 	return body;
 }
 
