@@ -38,11 +38,12 @@ var spawner = {
 			}
 			
 			if (creepBody.length > 0){
-				Game.spawns['Spawn1'].spawnCreep(creepBody, creepRole + Game.time, 
+				let spawnResult;
+				spawnResult = Game.spawns['Spawn1'].spawnCreep(creepBody, creepRole + Game.time, 
 					{memory: 
 						{role: creepRole}});
 				console.log('Spawning new ' + creepRole + ' with body ' + creepBody.toString());
-				console.log('Energy Available: ' + Game.spawns['Spawn1'].room.energyCapacityAvailable);
+				console.log(spawnResult);
 			}
 		}else { 
 	        var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
