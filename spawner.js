@@ -21,39 +21,22 @@ var spawner = {
 
 			var creepBody = []
 			var creepRole = '';
-			var needCreep = false;
+
 
 			if (carriers.length < idealCarriers) {
-				creepBody = [];
-				creepBody.push(CARRY);
-				creepBody.push(CARRY);
-				creepBody.push(CARRY);
-				creepBody.push(MOVE);
-				creepBody.push(MOVE);
-				creepBody.push(MOVE);
+				creepBody = getCreepBody('carrier');
 			}else if (harvesters.length < idealHarvesters) {
-				creepBody = [];
-				creepBody.push(WORK);
-				creepBody.push(WORK);
-				creepBody.push(MOVE);
-				creepBody.push(MOVE);
+				creepBody = getCreepBody('harvester');
 			}else if (builders.length < idealBuilders) {
-				creepBody = [];
-				creepBody.push(WORK);
-				creepBody.push(WORK);				
-				creepBody.push(CARRY);
-				creepBody.push(MOVE);
+				creepBody = getCreepBody('builder');
 			}else if (upgraders.length < idealUpgraders) {
-				creepBody = [];
-				creepBody.push(WORK);
-				creepBody.push(WORK);				
-				creepBody.push(CARRY);
-				creepBody.push(MOVE);
+				creepBody = getCreepBody('upgrader');
 			}
 			
 			if (creepBody.length > 0){
 				Game.spawns['Spawn1'].spawnCreep(creepBody, creepRole + Game.time, 
-					{memory: {role: creepRole}});
+					{memory: 
+						{role: creepRole}});
 				console.log('Spawning new ' + creepRole + ': ' + newName);
 			}
 		}else { 
@@ -67,5 +50,67 @@ var spawner = {
 	}
 
 };
+
+var getCreepBody = function(role){
+	let maxBodyParts = 50;
+	let maxEnergy = Game.spawns['Spawn1'].room.energyCapacityAvailable;
+	let body = [];
+
+	if (role == 'builder'){
+		var bodyOptions = {"WORK": 2, "MOVE": 1, "CARRY": 1}
+		var exact = false;
+	}else if (role == 'carrier'){
+		var bodyOptions = {"MOVE": 1, "CARRY": 1}
+		var exact = false;
+	}else if (role == 'harvester'){
+		var bodyOptions = {"WORK": 2, "MOVE": 2, "WORK": 3, "MOVE": 5}
+		var exact = true;
+	}else if (role == 'upgrader'){
+		var bodyOptions = {"WORK": 2, "MOVE": 1, "CARRY": 1}
+		var exact = false;
+	}
+
+	if(exact){
+	
+		for (let bodyPart in bodyOptions){
+			if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0 ) break;
+
+			for (let i=0; i< bodyOptions[bodyPart];i++){
+				if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0) {
+					maxEnergy =0;
+					break;
+				}
+
+				bodyOptions.push(bodyPart);
+				maxEnergy -= BODYPART_COST[bodyPart];
+				maxBodyParts--;
+			}
+		}
+	}else{
+        //ratioCost will tell us how much each iteration of the ratio will cost
+        let ratioCost = 0;
+        for(let bodyPart in bodyOptions){
+            for(let i = 0; i < bodyOptions[bodyPart]; i++){
+                ratioCost += BODYPART_COST[bodyPart];
+            }
+        }
+        
+        //With our ratio cost, we now figure out the maximum amount of the ratio we can make. We     
+        //test three things, whether we run into the maximum energy for the room, the maximum 
+        //bodyparts allowed, or the specified bodypart limit we put into the options
+        let maxUnits = Math.min(
+            Math.floor(maxEnergy / ratioCost),
+            Math.floor((maxBodyParts || 50) / _.sum(bodyOptions)),
+            Math.floor(maxBodyParts / _.sum(bodyOptions))
+        );
+        //Now we know how many of each bodypart we will make, we cycle through the order given to 
+        //create the body
+        for(let bodyPart in bodyOptions){
+            for(let i = 0; i < maxUnits * bodyOptions[bodyPart]; i++)
+                body.push(bodyPart);
+        }
+	}
+	return body;
+}
 
 module.exports = spawner;
