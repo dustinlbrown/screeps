@@ -21,7 +21,7 @@ var roleBuilder = {
             }
         }
         else {
-            withdrawEnergy(creep);
+            creep.withdrawEnergy();
         }
     }
 };
