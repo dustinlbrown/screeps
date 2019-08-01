@@ -1,3 +1,4 @@
+
 "use strict"
 
 var spawner = {
@@ -128,7 +129,6 @@ function getCreepBody(role){
             for(var i = 0; i < maxUnits * opts.body[bodyPart]; i++)
 				body.push(bodyPart);
 				console.log(bodyPart);
-				console.log(Arrays.toString(body));
 		}
 		console.log('Returning '+ body.toString());
 		return body;
