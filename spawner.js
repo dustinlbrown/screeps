@@ -57,6 +57,8 @@ var spawner = {
 };
 
 function getCreepBody(role){
+	console.log('Getting creep body for role: ' + role);
+	
 	var maxBodyParts = 50;
 	var maxEnergy = Game.spawns['Spawn1'].room.energyCapacityAvailable;
 	var body = [];
@@ -70,7 +72,6 @@ function getCreepBody(role){
 	}else if (role == 'upgrader'){
 		opts = {body: {WORK: 2, MOVE: 1, CARRY: 1},exact: false};
 	}
-
 	if(opts.exact){
 
         //cycle through the body parts in options
