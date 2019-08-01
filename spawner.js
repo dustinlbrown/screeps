@@ -128,7 +128,7 @@ function getCreepBody(role){
         for(var bodyPart in opts.body){
             for(var i = 0; i < maxUnits * opts.body[bodyPart]; i++)
 				body.push(bodyPart);
-				console.log(bodyPart);
+				console.log('Adding : ' +bodyPart + ' Array Length: ' + body.length());
 		}
 		console.log('Returning '+ body.toString());
 		return body;
