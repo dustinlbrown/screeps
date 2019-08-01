@@ -100,7 +100,7 @@ function getCreepBody(role){
                 maxBodyParts--;
             }
 		}
-		console.log('Returning '+ body.toString())
+		console.log('Returning '+ body.toString());
 		return body;
     }
     
@@ -128,8 +128,9 @@ function getCreepBody(role){
             for(var i = 0; i < maxUnits * opts.body[bodyPart]; i++)
 				body.push(bodyPart);
 				console.log(bodyPart);
+				console.log(Arrays.toString(body));
 		}
-		console.log('Returning '+ body.toString())
+		console.log('Returning '+ body.toString());
 		return body;
 	}	
 };
