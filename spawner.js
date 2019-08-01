@@ -128,7 +128,7 @@ function getCreepBody(role){
 				console.log(bodyPart);
         }
 	}
-	console.log('Returning '+ body)
+	console.log('Returning '+ body.toString())
 	return body;
 };
 
