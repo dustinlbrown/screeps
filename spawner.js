@@ -62,7 +62,6 @@ function getCreepBody(role){
 
 	var maxBodyParts = 50;
 	var maxEnergy = Game.spawns['Spawn1'].room.energyCapacityAvailable;
-	console.log(Game.creeps);
 	if(Object.keys(Game.creeps).length < 3){
 		maxEnergy = 300;
 	}
@@ -74,7 +73,7 @@ function getCreepBody(role){
 	}else if (role == 'carrier'){
 		opts = {body: {move: 1, carry: 1},exact: false};
 	}else if (role == 'harvester'){
-		opts = {body: {work: 2, move: 2, work: 3, move: 2},exact: true};
+		opts = {body: {work: 2, move: 2, work: 3, move: 3},exact: true};
 	}else if (role == 'upgrader'){
 		opts = {body: {work: 2, move: 1, carry: 1},exact: false};
 	}
@@ -87,15 +86,16 @@ function getCreepBody(role){
             if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0) break;
 
             //cycle through the number of bodyparts for each body part
-            for (var i = 0; i < opts.body[bodyPart]; i++) {
-
+            for (let i = 0; i < opts.body[bodyPart]; i++) {
+				
                 //if the next body part costs too much or we've run into our 50 bodypart limit,     
                 //break
                 if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0){
                     maxEnergy = 0; break;
                 }
                 
-                //push this body part into the body array
+				//push this body part into the body array
+				console.log('bodyPart: ' + bodyPart);
 				body.push(bodyPart);
                 
                 //decrement the maximum energy allowed for the next iteration
@@ -105,8 +105,6 @@ function getCreepBody(role){
                 maxBodyParts--;
             }
 		}
-		console.log('Returning '+ body.toString());
-		return body;
     }
     
     //if this is a ratio instead of exact
@@ -114,7 +112,7 @@ function getCreepBody(role){
         //ratioCost will tell us how much each iteration of the ratio will cost
         var ratioCost = 0;
         for(let bodyPart in opts.body){
-            for(var i = 0; i < opts.body[bodyPart]; i++){
+            for(let i = 0; i < opts.body[bodyPart]; i++){
 
                 ratioCost += BODYPART_COST[bodyPart.toLowerCase()];
             }
@@ -136,8 +134,8 @@ function getCreepBody(role){
 				body.push(bodyPart);
 			}
 		}
-		return body;
 	}	
+	return body;
 };
 
 module.exports = spawner;
