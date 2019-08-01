@@ -62,7 +62,7 @@ function getCreepBody(role){
 
 	var maxBodyParts = 50;
 	var maxEnergy = Game.spawns['Spawn1'].room.energyCapacityAvailable;
-
+	console.log(Game.creeps);
 	if(Game.creeps.length < 3){
 		maxEnergy = 300;
 	}
