@@ -65,13 +65,13 @@ function getCreepBody(role){
 	var body = [];
 	var opts = '';
 	if (role == 'builder'){
-		opts = {body: {WORK: 2, MOVE: 1, CARRY: 1},exact: false};
+		opts = {body: {work: 2, move: 1, carry: 1},exact: false};
 	}else if (role == 'carrier'){
-		opts = {body: {MOVE: 1, CARRY: 1},exact: false};
+		opts = {body: {move: 1, carry: 1},exact: false};
 	}else if (role == 'harvester'){
-		opts = {body: {MOVE: 4, WORK: 3, MOVE: 3, WORK: 2},exact: true};
+		opts = {body: {move: 4, work: 3, move: 3, work: 2},exact: true};
 	}else if (role == 'upgrader'){
-		opts = {body: {WORK: 2, MOVE: 1, CARRY: 1},exact: false};
+		opts = {body: {work: 2, move: 1, carry: 1},exact: false};
 	}
 
 	if(opts.exact){
