@@ -26,22 +26,18 @@ var spawner = {
 
 
 			if (carriers.length < idealCarriers) {
-				creepRole = 'carrier'
-				creepBody = getCreepBody(creepRole);
+				creepRole = 'carrier';
 			}else if (harvesters.length < idealHarvesters) {
-				creepRole = 'harvester'
-				creepBody = getCreepBody(creepRole);
+				creepRole = 'harvester';
 			}else if (builders.length < idealBuilders) {
-				creepRole = 'builder'
-				creepBody = getCreepBody(creepRole);
+				creepRole = 'builder';
 			}else if (upgraders.length < idealUpgraders) {
-				creepRole = 'upgrader'
-				creepBody = getCreepBody(creepRole);
+				creepRole = 'upgrader';
 			}
 			
-			if (creepBody.length > 0){
+			if (creepRole !== ''){
 				var spawnResult;
-				spawnResult = Game.spawns['Spawn1'].spawnCreep(creepBody, creepRole + Game.time, 
+				spawnResult = Game.spawns['Spawn1'].spawnCreep(getCreepBody(creepRole), creepRole + Game.time, 
 					{memory: 
 						{role: creepRole}});
 				console.log('Spawning new ' + creepRole + ' with body ' + creepBody.toString());
@@ -131,6 +127,6 @@ var getCreepBody = function(role){
         }
     }
 	return body;
-}
+};
 
 module.exports = spawner;
