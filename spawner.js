@@ -21,7 +21,7 @@ var spawner = {
 
 		if(!Game.spawns['Spawn1'].spawning){
 
-			var creepBody = [];
+
 			var creepRole = '';
 
 
@@ -37,7 +37,8 @@ var spawner = {
 			
 			if (creepRole !== ''){
 				var spawnResult;
-				spawnResult = Game.spawns['Spawn1'].spawnCreep(getCreepBody(creepRole), creepRole + Game.time, 
+				var creepBody = getCreepBody(creepRole);
+				spawnResult = Game.spawns['Spawn1'].spawnCreep(creepBody, creepRole + Game.time, 
 					{memory: 
 						{role: creepRole}});
 				console.log('Spawning new ' + creepRole + ' with body ' + creepBody.toString());
