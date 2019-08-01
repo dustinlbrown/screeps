@@ -92,7 +92,6 @@ function getCreepBody(role){
                 
                 //push this body part into the body array
 				body.push(bodyPart);
-				console.log(bodyPart);
                 
                 //decrement the maximum energy allowed for the next iteration
                 maxEnergy -= BODYPART_COST[bodyPart];
@@ -111,10 +110,7 @@ function getCreepBody(role){
         var ratioCost = 0;
         for(let bodyPart in opts.body){
             for(var i = 0; i < opts.body[bodyPart]; i++){
-				console.log('BODYPART_COST[bodyPart] ' +BODYPART_COST[bodyPart.toLowerCase()]);
-				console.log('bodyPart ' + bodyPart);
-				console.log('typeof bodyPart ' + typeof(bodyPart));
-				
+
                 ratioCost += BODYPART_COST[bodyPart.toLowerCase()];
             }
         }
@@ -131,16 +127,10 @@ function getCreepBody(role){
         //Now we know how many of each bodypart we will make, we cycle through the order given to 
         //create the body
         for(let bodyPart in opts.body){
-			console.log('maxUnits ' + maxUnits);
-			console.log(maxEnergy);
-			console.log(ratioCost);
-			console.log(maxBodyParts);
             for(let i = 0; i < maxUnits * opts.body[bodyPart]; i++){
 				body.push(bodyPart);
-				console.log('Adding : ' +bodyPart + ' Array Length: ' + body.length);
 			}
 		}
-		console.log('Returning '+ body.toString());
 		return body;
 	}	
 };
