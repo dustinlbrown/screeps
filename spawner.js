@@ -99,7 +99,9 @@ function getCreepBody(role){
                 //decrement the 50 body part limit
                 maxBodyParts--;
             }
-        }
+		}
+		console.log('Returning '+ body.toString())
+		return body;
     }
     
     //if this is a ratio instead of exact
@@ -126,10 +128,10 @@ function getCreepBody(role){
             for(var i = 0; i < maxUnits * opts.body[bodyPart]; i++)
 				body.push(bodyPart);
 				console.log(bodyPart);
-        }
-	}
-	console.log('Returning '+ body.toString())
-	return body;
+		}
+		console.log('Returning '+ body.toString())
+		return body;
+	}	
 };
 
 module.exports = spawner;
