@@ -58,7 +58,7 @@ var spawner = {
 
 function getCreepBody(role){
 	console.log('Getting creep body for role: ' + role);
-	
+
 	var maxBodyParts = 50;
 	var maxEnergy = Game.spawns['Spawn1'].room.energyCapacityAvailable;
 	var body = [];
@@ -72,10 +72,10 @@ function getCreepBody(role){
 	}else if (role == 'upgrader'){
 		opts = {body: {WORK: 2, MOVE: 1, CARRY: 1},exact: false};
 	}
-	if(opts.exact){
 
+	if(opts.exact){
         //cycle through the body parts in options
-        for(var bodyPart in opts.body) {
+        for(let bodyPart in opts.body) {
 
             //Need to break out of both for loops
             if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0) break;
@@ -106,7 +106,7 @@ function getCreepBody(role){
     else{
         //ratioCost will tell us how much each iteration of the ratio will cost
         var ratioCost = 0;
-        for(var bodyPart in opts.body){
+        for(let bodyPart in opts.body){
             for(var i = 0; i < opts.body[bodyPart]; i++){
                 ratioCost += BODYPART_COST[bodyPart];
             }
@@ -124,7 +124,8 @@ function getCreepBody(role){
         //create the body
         for(var bodyPart in opts.body){
             for(var i = 0; i < maxUnits * opts.body[bodyPart]; i++)
-                body.push(bodyPart);
+				body.push(bodyPart);
+				console.log(bodyPart);
         }
     }
 	return body;
