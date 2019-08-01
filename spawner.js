@@ -117,7 +117,7 @@ function getCreepBody(role){
         //bodyparts allowed, or the specified bodypart limit we put into the options
         var maxUnits = Math.min(
             Math.floor(maxEnergy / ratioCost),
-            Math.floor((opts.maxBodyParts || 50) / _.sum(opts.body)),
+            Math.floor((maxBodyParts || 50) / _.sum(opts.body)),
             Math.floor(maxBodyParts / _.sum(opts.body))
         );
         //Now we know how many of each bodypart we will make, we cycle through the order given to 
