@@ -128,6 +128,9 @@ function getCreepBody(role){
         //create the body
         for(let bodyPart in opts.body){
 			console.log('maxUnits ' + maxUnits);
+			console.log(maxEnergy);
+			console.log(ratioCost);
+			console.log(maxBodyParts);
             for(let i = 0; i < maxUnits * opts.body[bodyPart]; i++){
 				body.push(bodyPart);
 				console.log('Adding : ' +bodyPart + ' Array Length: ' + body.length);
