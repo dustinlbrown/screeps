@@ -115,7 +115,7 @@ function getCreepBody(role){
 				console.log('bodyPart ' + bodyPart);
 				console.log('typeof bodyPart ' + typeof(bodyPart));
 				
-                ratioCost += BODYPART_COST[bodyPart];
+                ratioCost += BODYPART_COST[bodyPart.toLowerCase()];
             }
         }
         
