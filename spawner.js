@@ -74,7 +74,7 @@ function getCreepBody(role){
 	}else if (role == 'carrier'){
 		opts = {body: {move: 1, carry: 1},exact: false};
 	}else if (role == 'harvester'){
-		opts = {body: {move: 4, work: 3, move: 3, work: 2},exact: true};
+		opts = {body: {work: 2, move: 2, work: 3, move: 2},exact: true};
 	}else if (role == 'upgrader'){
 		opts = {body: {work: 2, move: 1, carry: 1},exact: false};
 	}
