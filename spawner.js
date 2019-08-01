@@ -112,6 +112,8 @@ function getCreepBody(role){
         for(let bodyPart in opts.body){
             for(var i = 0; i < opts.body[bodyPart]; i++){
 				console.log('BODYPART_COST[bodyPart] ' +BODYPART_COST[bodyPart]);
+				console.log('bodyPart ' + bodyPart);
+				
                 ratioCost += BODYPART_COST[bodyPart];
             }
         }
