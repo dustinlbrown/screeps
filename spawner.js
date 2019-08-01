@@ -56,7 +56,7 @@ var spawner = {
 
 };
 
-var getCreepBody = function(role){
+function getCreepBody(role){
 	var maxBodyParts = 50;
 	var maxEnergy = Game.spawns['Spawn1'].room.energyCapacityAvailable;
 	var body = [];
@@ -103,7 +103,6 @@ var getCreepBody = function(role){
     
     //if this is a ratio instead of exact
     else{
-        
         //ratioCost will tell us how much each iteration of the ratio will cost
         var ratioCost = 0;
         for(var bodyPart in opts.body){
