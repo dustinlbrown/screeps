@@ -40,7 +40,7 @@ var spawner = {
 			}
 			
 			if (creepBody.length > 0){
-				let spawnResult;
+				var spawnResult;
 				spawnResult = Game.spawns['Spawn1'].spawnCreep(creepBody, creepRole + Game.time, 
 					{memory: 
 						{role: creepRole}});
@@ -60,9 +60,9 @@ var spawner = {
 };
 
 var getCreepBody = function(role){
-	let maxBodyParts = 50;
-	let maxEnergy = Game.spawns['Spawn1'].room.energyCapacityAvailable;
-	let body = [];
+	var maxBodyParts = 50;
+	var maxEnergy = Game.spawns['Spawn1'].room.energyCapacityAvailable;
+	var body = [];
 	var opts = '';
 	if (role == 'builder'){
 		opts = {body: {WORK: 2, MOVE: 1, CARRY: 1},exact: false};
@@ -77,13 +77,13 @@ var getCreepBody = function(role){
 	if(opts.exact){
 
         //cycle through the body parts in options
-        for(let bodyPart in opts.body) {
+        for(var bodyPart in opts.body) {
 
             //Need to break out of both for loops
             if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0) break;
 
             //cycle through the number of bodyparts for each body part
-            for (let i = 0; i < opts.body[bodyPart]; i++) {
+            for (var i = 0; i < opts.body[bodyPart]; i++) {
 
                 //if the next body part costs too much or we've run into our 50 bodypart limit,     
                 //break
@@ -108,9 +108,9 @@ var getCreepBody = function(role){
     else{
         
         //ratioCost will tell us how much each iteration of the ratio will cost
-        let ratioCost = 0;
-        for(let bodyPart in opts.body){
-            for(let i = 0; i < opts.body[bodyPart]; i++){
+        var ratioCost = 0;
+        for(var bodyPart in opts.body){
+            for(var i = 0; i < opts.body[bodyPart]; i++){
                 ratioCost += BODYPART_COST[bodyPart];
             }
         }
@@ -118,15 +118,15 @@ var getCreepBody = function(role){
         //With our ratio cost, we now figure out the maximum amount of the ratio we can make. We     
         //test three things, whether we run into the maximum energy for the room, the maximum 
         //bodyparts allowed, or the specified bodypart limit we put into the options
-        let maxUnits = Math.min(
+        var maxUnits = Math.min(
             Math.floor(maxEnergy / ratioCost),
             Math.floor((opts.maxBodyParts || 50) / _.sum(opts.body)),
             Math.floor(maxBodyParts / _.sum(opts.body))
         );
         //Now we know how many of each bodypart we will make, we cycle through the order given to 
         //create the body
-        for(let bodyPart in opts.body){
-            for(let i = 0; i < maxUnits * opts.body[bodyPart]; i++)
+        for(var bodyPart in opts.body){
+            for(var i = 0; i < maxUnits * opts.body[bodyPart]; i++)
                 body.push(bodyPart);
         }
     }
