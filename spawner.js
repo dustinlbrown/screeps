@@ -126,9 +126,10 @@ function getCreepBody(role){
         //Now we know how many of each bodypart we will make, we cycle through the order given to 
         //create the body
         for(var bodyPart in opts.body){
-            for(var i = 0; i < maxUnits * opts.body[bodyPart]; i++)
+            for(var i = 0; i < maxUnits * opts.body[bodyPart]; i++){
 				body.push(bodyPart);
 				console.log('Adding : ' +bodyPart + ' Array Length: ' + body.length);
+			}
 		}
 		console.log('Returning '+ body.toString());
 		return body;
