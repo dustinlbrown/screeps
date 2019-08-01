@@ -122,11 +122,12 @@ function getCreepBody(role){
             Math.floor(maxEnergy / ratioCost),
             Math.floor((maxBodyParts || 50) / _.sum(opts.body)),
             Math.floor(maxBodyParts / _.sum(opts.body))
-        );
+		);
+		
         //Now we know how many of each bodypart we will make, we cycle through the order given to 
         //create the body
-        for(var bodyPart in opts.body){
-            for(var i = 0; i < maxUnits * opts.body[bodyPart]; i++){
+        for(let bodyPart in opts.body){
+            for(let i = 0; i < maxUnits * opts.body[bodyPart]; i++){
 				body.push(bodyPart);
 				console.log('Adding : ' +bodyPart + ' Array Length: ' + body.length);
 			}
