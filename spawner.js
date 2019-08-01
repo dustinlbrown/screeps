@@ -89,13 +89,14 @@ function getCreepBody(role){
             for (let i = 0; i < opts.body[bodyPart]; i++) {
 				
                 //if the next body part costs too much or we've run into our 50 bodypart limit,     
-                //break
+				//break
+				console.log('bodyPart: ' + bodyPart + '\nmaxEnergy: ' + maxEnergy + '\nmaxBodyParts: ' + maxBodyParts);
                 if(BODYPART_COST[bodyPart] > maxEnergy || maxBodyParts === 0){
                     maxEnergy = 0; break;
                 }
                 
 				//push this body part into the body array
-				console.log('bodyPart: ' + bodyPart);
+				
 				body.push(bodyPart);
                 
                 //decrement the maximum energy allowed for the next iteration
