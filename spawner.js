@@ -62,6 +62,11 @@ function getCreepBody(role){
 
 	var maxBodyParts = 50;
 	var maxEnergy = Game.spawns['Spawn1'].room.energyCapacityAvailable;
+
+	if(Game.creeps.length < 3){
+		maxEnergy = 300;
+	}
+
 	var body = [];
 	var opts = '';
 	if (role == 'builder'){
